@@ -4,15 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { BallComponent } from './ball/ball.component';
+import { ButtonsModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BallComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ButtonsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
