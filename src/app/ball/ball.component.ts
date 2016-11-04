@@ -1,36 +1,23 @@
-import {Component, OnInit, style, state, animate, transition, trigger} from '@angular/core';
-
+import { Component } from '@angular/core';
+import { BallAnimationFactory } from './ball.animation.factory';
 
 @Component({
     selector: 'app-ball',
     templateUrl: './ball.component.html',
     styleUrls: ['./ball.component.css'],
     animations: [
-        trigger('move', [
-            state('right', style({
-                'left':'500px',
-                'background-color':'pink'
-            })),
-            state('left', style({
-                'left':'0px'
-            })),
-            transition('* => *', animate(500))
-        ])
+        BallAnimationFactory.createUpDownAnimation('vertical'),
+        BallAnimationFactory.createLeftRightAnimation('move')
     ],
 })
-export class BallComponent implements OnInit {
+export class BallComponent {
 
-    public move:string;     // Used for the animation state
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    public move:string = 'left';     // Used for the animation state
+    public vertical:string = 'top';     // Used for the animation state
 
     public moveBall() {
-        console.log('Move Ball');
         this.move = this.move !== 'right' ? 'right' : 'left';
+        this.vertical = this.vertical !== 'top' ? 'top' : 'bottom';
     }
 
 }
