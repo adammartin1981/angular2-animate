@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BallAnimationFactory } from './ball.animation.factory';
 
 @Component({
-    selector: 'app-ball',
+    selector: 'app-ball-animator',
     templateUrl: './ball.component.html',
     styleUrls: ['./ball.component.css'],
     animations: [
@@ -10,7 +10,7 @@ import { BallAnimationFactory } from './ball.animation.factory';
         BallAnimationFactory.createLeftRightAnimation('move')
     ],
 })
-export class BallComponent {
+export class BallAnimatorComponent {
 
     public move:string = 'left';     // Used for the animation state
     public vertical:string = 'top';     // Used for the animation state
