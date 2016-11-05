@@ -32,7 +32,7 @@ export class BallAnimationFactory {
             // })),
             state('right', style({
                 'left':'100%',
-                'margin-left':'-300px'
+                'margin-left':'-50px'
             })),
             state('left', style({
                 'left':'0px'
