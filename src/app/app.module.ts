@@ -12,6 +12,7 @@ import routes from './app.routes';
 import { NavComponent } from './sections/nav/nav.component';
 import { DragComponent } from './pages/drag/drag.component';
 import { BallComponent } from './ui/ball/ball.component';
+import { BallDragComponent } from './ui/ball-drag/ball-drag.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { BallComponent } from './ui/ball/ball.component';
         NavComponent,
         DragComponent,
         BallComponent,
-        BallAnimatorComponent
+        BallAnimatorComponent,
+        BallDragComponent
     ],
     imports: [
         BrowserModule,
