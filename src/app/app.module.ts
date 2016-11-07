@@ -20,6 +20,9 @@ import {AuthGuard} from './guards/firebase.authguard';
 import {AuthService} from './services/auth.service';
 import { LoginComponent } from './pages/login/login.component';
 import {LoginService} from './services/login.service';
+import {MaterialModule} from '@angular/material';
+import {FlexDirective} from './directives/flex.directive';
+import {LayoutDirective} from './directives/layout.directive';
 
 @NgModule({
     declarations: [
@@ -32,7 +35,9 @@ import {LoginService} from './services/login.service';
         BallAnimatorComponent,
         BallDragComponent,
         FirebaseComponent,
-        LoginComponent
+        LoginComponent,
+        FlexDirective,
+        LayoutDirective
 
     ],
     imports: [
@@ -47,7 +52,8 @@ import {LoginService} from './services/login.service';
         AngularFireModule.initializeApp(firebaseConfig, {
             provider : AuthProviders.Google,
             method : AuthMethods.Popup
-        })
+        }),
+        MaterialModule.forRoot()
     ],
     providers: [
         AuthGuard,

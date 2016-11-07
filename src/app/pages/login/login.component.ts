@@ -19,16 +19,10 @@ export class LoginComponent {
     }
 
     public login(): void {
-        this.angularFire.auth.login({
-            provider: AuthProviders.Google
-        }).then(() => {
-            console.log('LOGGED IN', this.loginService.redirectUrl);
-            this.router.navigate([this.loginService.redirectUrl]);
-        });
+        this.loginService.login();
     }
 
     public logout(): void {
-        this.router.navigate(['/']);
-        this.angularFire.auth.logout();
+        this.loginService.logout();
     }
 }

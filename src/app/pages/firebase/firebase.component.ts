@@ -15,14 +15,14 @@ export class FirebaseComponent {
         this.data$ = this.angularFire.database.list('messages');
     }
 
-    public update(x) {
+    public update(x):void {
         //
         this.data$.update(x.$key, {
-            date : x.date += ' Lucas was here'
+            date : x.date += ' Added Value'
         });
     }
 
-    public remove(x:any) {
+    public remove(x:any):void {
         this.data$.remove(x);
     }
 

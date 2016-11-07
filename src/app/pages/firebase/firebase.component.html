@@ -1,9 +1,6 @@
-<p>
-    firebase works!
-</p>
 <div *ngFor="let x of data$ | async"
     (click)="update(x)"
 
->{{ x.date }}<button (click)="remove(x)">X</button></div>
+><button md-icon-button color='accent'(click)="remove(x)"><md-icon>delete</md-icon></button>{{ x.date }}</div>
 
-<button (click)="add()">Add</button>
+<button md-button color="primary" (click)="add()">Add</button>

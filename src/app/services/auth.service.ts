@@ -15,9 +15,7 @@ export class AuthService {
     }
 
     public isAuthed(redirectTo?:string):Observable<boolean> {
-        return this.auth
-            .take(1)
-            .map((authState: FirebaseAuthState) => !!authState)
+        return this.getAuth()
             .do(authenticated => {
                 if (!authenticated) {
                     if ( redirectTo ) {
@@ -26,5 +24,9 @@ export class AuthService {
                     this.router.navigate(['/login']);
                 }
             });
+    }
+
+    public getAuth():Observable<boolean> {
+        return this.auth.take(1).map((authState: FirebaseAuthState) => !!authState)
     }
 }

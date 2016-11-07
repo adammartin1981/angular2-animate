@@ -1,31 +1,28 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button"
+<md-toolbar color="primary">
+    <span>Adams Demos</span>
+    <button md-button *ngIf="!(isAuthed | async)" (click)="login()">Login</button>
+    <button md-button *ngIf="(isAuthed | async)" (click)="logout()">Logout</button>
+</md-toolbar>
+<md-tab-group [selectedIndex]='selectedIndex' (selectChange)='selectTab($event)' (focusChange)="changeTab($event)">
+    <md-tab>
+        <template md-tab-label>
+            Home
+        </template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label>
+            Animations
+        </template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label>
+            Drag and Drop
+        </template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label>
+            Firebase
+        </template>
+    </md-tab>
+</md-tab-group>
 
-                    (click)="isCollapsed = !isCollapsed"
-                    class="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" routerLink="/">Adams Demos</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div [collapse]="isCollapsed"
-             class="collapse navbar-collapse"
-             id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a routerLink="/ball">Animations</a></li>
-                <li routerLinkActive="active"><a routerLink="/drag">Drag and Drop</a></li>
-                <li routerLinkActive="active"><a routerLink="/fire">Firebase</a></li>
-                <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
