@@ -1,0 +1,9 @@
+<p>
+    firebase works!
+</p>
+<div *ngFor="let x of data$ | async"
+    (click)="update(x)"
+
+>{{ x.date }}<button (click)="remove(x)">X</button></div>
+
+<button (click)="add()">Add</button>

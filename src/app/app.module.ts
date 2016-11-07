@@ -13,6 +13,13 @@ import { NavComponent } from './sections/nav/nav.component';
 import { DragComponent } from './pages/drag/drag.component';
 import { BallComponent } from './ui/ball/ball.component';
 import { BallDragComponent } from './ui/ball-drag/ball-drag.component';
+import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
+import {firebaseConfig} from './environment/firebase.config';
+import { FirebaseComponent } from './pages/firebase/firebase.component';
+import {AuthGuard} from './guards/firebase.authguard';
+import {AuthService} from './services/auth.service';
+import { LoginComponent } from './pages/login/login.component';
+import {LoginService} from './services/login.service';
 
 @NgModule({
     declarations: [
@@ -23,7 +30,10 @@ import { BallDragComponent } from './ui/ball-drag/ball-drag.component';
         DragComponent,
         BallComponent,
         BallAnimatorComponent,
-        BallDragComponent
+        BallDragComponent,
+        FirebaseComponent,
+        LoginComponent
+
     ],
     imports: [
         BrowserModule,
@@ -32,10 +42,21 @@ import { BallDragComponent } from './ui/ball-drag/ball-drag.component';
         ButtonsModule,
         CollapseModule,
         DropdownModule,
-        routes
+
+        routes,
+        AngularFireModule.initializeApp(firebaseConfig, {
+            provider : AuthProviders.Google,
+            method : AuthMethods.Popup
+        })
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+        AuthGuard,
+        AuthService,
+        LoginService
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 }
