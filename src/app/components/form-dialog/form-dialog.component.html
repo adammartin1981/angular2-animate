@@ -1,0 +1,17 @@
+<form [formGroup]="group" (ngSubmit)="submit()">
+    <md-input-container class="example-full-width" >
+      <input mdInput placeholder="Text" formControlName="date" />
+    </md-input-container>
+
+    <div style="margin: auto">
+        <button type="submit"
+                md-raised-button
+                [disabled]="!group.valid"
+        >OK</button>
+
+        <button type="button"
+                md-button
+                (click)="close()"
+        >Cancel</button>
+    </div>
+</form>
