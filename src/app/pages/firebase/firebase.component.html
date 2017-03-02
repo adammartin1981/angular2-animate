@@ -1,6 +1,10 @@
-<div *ngFor="let x of data$ | async"
-    (click)="update(x)"
-
-><button md-icon-button color='accent'(click)="remove(x)"><md-icon>delete</md-icon></button>{{ x.date }}</div>
+<app-fire-base-detail
+        *ngFor="let firebaseDetail of data$ | async"
+        [fireItem]="firebaseDetail"
+        (delete)="remove($event)"
+        (edit)="update($event)"
+></app-fire-base-detail>
 
 <button md-button color="primary" (click)="add()">Add</button>
+
+
