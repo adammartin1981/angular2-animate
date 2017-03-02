@@ -1,5 +1,6 @@
 <md-toolbar color="primary">
     <span>Adams Demos</span>
+    <span class="example-fill-remaining-space"></span>
     <button md-button *ngIf="!(isAuthed | async)" (click)="login()">Login</button>
     <button md-button *ngIf="(isAuthed | async)" (click)="logout()">Logout</button>
 </md-toolbar>
