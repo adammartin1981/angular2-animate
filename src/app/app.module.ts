@@ -8,7 +8,7 @@ import {BallAnimatorComponent} from './ball-animator/ball.component';
 import {ButtonsModule, DropdownModule, CollapseModule} from 'ng2-bootstrap/ng2-bootstrap';
 import {HomeComponent} from './pages/home/home.component';
 import {AnimationComponent} from './pages/animation/animation.component';
-import routes from './app.routes';
+
 import { NavComponent } from './sections/nav/nav.component';
 import { DragComponent } from './pages/drag/drag.component';
 import { BallComponent } from './ui/ball/ball.component';
@@ -23,6 +23,7 @@ import {LoginService} from './services/login.service';
 import {MaterialModule} from '@angular/material';
 import {FlexDirective} from './directives/flex.directive';
 import {LayoutDirective} from './directives/layout.directive';
+import { Routing } from './app.routes';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,7 @@ import {LayoutDirective} from './directives/layout.directive';
         CollapseModule,
         DropdownModule,
 
-        routes,
+        Routing,
         AngularFireModule.initializeApp(firebaseConfig, {
             provider : AuthProviders.Google,
             method : AuthMethods.Popup

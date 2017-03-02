@@ -30,5 +30,5 @@ const routes = [
     }
 ];
 
-export default RouterModule.forRoot(routes);
+export const Routing = RouterModule.forRoot(routes);
 
