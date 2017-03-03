@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 export interface CustomFirebaseObject {
     $key?: string;
     date: string;
+    name: string;
+    details: string;
 }
 
 @Component({
@@ -27,10 +29,30 @@ export class FirebaseComponent {
     }
 
     public update(x: CustomFirebaseObject):void {
-        this.openForm(x).filter(result => result).subscribe((res: any): void =>{
-            this.data$.update(res.$key, {
-                date : res.date
+        let newKeys:Array<string>;
+
+        this.openForm(x).filter(result => result).subscribe((res: CustomFirebaseObject): void =>{
+
+            newKeys = Object.keys(res).filter((k) => {
+                return k.indexOf('$') === -1;
             });
+
+            console.log('UPDATE', res);
+            newKeys.forEach((key) => {
+                console.log('DOING KEY', key);
+                this.data$.update(res.$key, {
+                    [key]: res[key]
+                });
+            });
+            // Object.keys(res).map((key) => {
+            //     console.log('RES', res.$key);
+            //     console.log('DATA:');
+            //     this.data$.update(res.$key, {
+            //         [key]: res[key]
+            //     });
+            //
+            // });
+            // this.data$.update(res.$key, res);
         });
     }
 
@@ -40,14 +62,16 @@ export class FirebaseComponent {
 
     public add():void {
         let newCustom: CustomFirebaseObject = {
-            date : new Date().toISOString()
+            date: new Date().toISOString(),
+            name: '',
+            details: ''
         };
 
         this.data$.push(newCustom);
     }
 
 
-    public openForm(formData: any): Observable<any> {
+    private openForm(formData: any): Observable<any> {
         return this.dialogueService.formModal(formData, this.viewContainerRef);
     }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 import { FormControl, FormGroup, FormBuilder, Validators }            from '@angular/forms';
+import { CustomFirebaseObject } from '../../pages/firebase/firebase.component';
 
 @Component({
     selector: 'app-form-dialog',
@@ -11,6 +12,8 @@ export class FormDialogComponent implements OnInit {
     // Set from the modal
     public formData: any;
     public group: FormGroup;
+
+    public keys:Array<string>;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -23,10 +26,22 @@ export class FormDialogComponent implements OnInit {
     }
 
     private createForm(): void {
-        this.group = this.formBuilder.group({
-            date: [this.formData.date, Validators.required],
-            $key: this.formData.$key
+        this.keys = Object.keys(this.formData).filter((key) => {
+            if (key.indexOf('$') === -1) {
+                return true;
+            }
+            return false;
         });
+
+        let groupObject = {}
+
+        this.keys.forEach((key) => {
+            groupObject[key] = this.formData[key]
+        });
+
+        groupObject['$key'] = this.formData.$key;
+
+        this.group = this.formBuilder.group(groupObject);
     }
 
     public submit() {

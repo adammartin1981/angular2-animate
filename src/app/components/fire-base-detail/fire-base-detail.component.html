@@ -1,7 +1,10 @@
 <div (click)="editClick()">
-  <button md-icon-button
-          color='accent'
-          (click)="deleteClick()"><md-icon>delete</md-icon>
-  </button>
-  {{ fireItem.date }}
+
+  <h4>
+    <button md-icon-button
+              color='accent'
+              (click)="deleteClick()"><md-icon>delete</md-icon>
+    </button>
+    {{ fireItem.date }} - {{ fireItem.name }}</h4>
+  <p>{{ fireItem.details }}</p>
 </div>
